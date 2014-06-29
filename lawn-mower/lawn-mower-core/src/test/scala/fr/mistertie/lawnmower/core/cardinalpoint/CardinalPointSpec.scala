@@ -1,7 +1,7 @@
 package fr.mistertie.lawnmower.core.cardinalpoint
 
-import fr.mistertie.lawnmower.core.test.UnitSpec
 import fr.mistertie.lawnmower.core.cardinalpoint.CardinalPoint._
+import fr.mistertie.lawnmower.core.test.UnitSpec
 
 /**
  * Test cases about [[CardinalPoint]].

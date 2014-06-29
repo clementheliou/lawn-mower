@@ -17,7 +17,7 @@ object CardinalPoint extends Enumeration {
   val WEST = Value('W')
 
   /**
-   * Given the source cardinal point, rotate it by 90 degree to left.
+   * Given the source cardinal point, rotate it by 90 degree to the left.
    * @param source the cardinal point to be rotated.
    * @return the rotation result.
    */
@@ -29,7 +29,7 @@ object CardinalPoint extends Enumeration {
   }
 
   /**
-   * Given the source cardinal point, rotate it by 90 degree to right.
+   * Given the source cardinal point, rotate it by 90 degree to the right.
    * @param source the cardinal point to be rotated.
    * @return the rotation result.
    */
