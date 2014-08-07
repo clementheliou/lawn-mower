@@ -229,4 +229,29 @@ class LawnSpec extends UnitSpec {
     // Assert
     result should equal(false)
   }
+
+  it should "produce an IllegalArgumentException while initialising an already booked position" in {
+    the[IllegalArgumentException] thrownBy {
+      // Arrange
+      val testedObject = Lawn(1, 1)
+      val positionToInitialise = Point(0, 0)
+      testedObject.initPosition(positionToInitialise)
+
+      // Act
+      testedObject.initPosition(positionToInitialise)
+
+    } should have message "Position already booked: Point(0,0)"
+  }
+
+  it should "initialize the given position if this one is free" in {
+    // Arrange
+    val positionToInitialise = Point(0, 0)
+    val testedObject = Lawn(1, 1)
+
+    // Act
+    testedObject.initPosition(positionToInitialise)
+
+    // Assert
+    testedObject.isBookedAt(positionToInitialise) should equal(true)
+  }
 }

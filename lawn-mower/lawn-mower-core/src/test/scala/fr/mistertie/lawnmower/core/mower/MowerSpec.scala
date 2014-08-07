@@ -11,6 +11,30 @@ import fr.mistertie.lawnmower.core.test.UnitSpec
  */
 class MowerSpec extends UnitSpec {
 
+  "A mower" must "not be created on already booked position" in {
+    an [IllegalArgumentException] should be thrownBy {
+      // Arrange
+      val parentLawn = Lawn(1, 1)
+      Mower(Point(0, 0), NORTH, parentLawn)
+
+      // Act
+      Mower(Point(0, 0), SOUTH, parentLawn)
+
+    }
+  }
+
+  it should "be created on free position" in {
+    // Arrange
+    val parentLawn = Lawn(1, 1)
+    val initialPosition = Point(0, 0)
+
+    // Act
+    Mower(initialPosition, NORTH, parentLawn)
+
+    // Assert
+    parentLawn.isBookedAt(initialPosition) should equal(true)
+  }
+
   "A mower oriented to the north" should "be oriented to the west after rotating to the left" in {
     // Arrange
     val testedObject = Mower(Point(0, 0), NORTH, Lawn(1, 1))

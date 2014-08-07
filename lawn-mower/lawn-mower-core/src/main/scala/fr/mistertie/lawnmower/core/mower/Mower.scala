@@ -12,6 +12,8 @@ import fr.mistertie.lawnmower.core.point.Point
  */
 class Mower private(var position: Point, var orientation: CardinalPoint, val parent: Lawn) {
 
+  parent.initPosition(position)
+
   /**
    * Given the mower orientation, rotate it by 90 degree to the left.
    */

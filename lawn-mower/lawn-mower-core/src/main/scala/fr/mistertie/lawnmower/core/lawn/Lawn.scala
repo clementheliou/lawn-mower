@@ -26,6 +26,18 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
   val topRightCorner = Point(topRightAbscissa, topRightOrdinate)
 
   /**
+   * Initialise the given position if free. That is to say booking the position without releasing an existing one.
+   * @param position the position to be initialised.
+   * @throws IllegalArgumentException if the position is already booked.
+   */
+  def initPosition(position: Point) {
+    if (isBookedAt(position)) {
+      throw new IllegalArgumentException("Position already booked: " + position)
+    }
+    bookedPositions += position
+  }
+
+  /**
    * Book the next position from the given one, releasing it. If the next position is
    * out of bound or taken, do nothing and return the given position.
    * @param currentPosition the source position.
