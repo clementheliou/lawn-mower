@@ -5,20 +5,12 @@ package fr.mistertie.lawnmower.core.point
  * @param abscissa the point's abscissa.
  * @param ordinate the point's ordinate.
  */
-class Point private(abscissa: Short, ordinate: Short) {
-  val coordinates = (abscissa, ordinate)
-}
-
-/**
- * Companion object of the [[Point]] class.
- */
-object Point {
+case class Point(abscissa: Int, ordinate: Int) {
 
   /**
-   * Well-known apply method allowing an easy use of the primary constructor.
-   * @param abscissa the point's abscissa.
-   * @param ordinate the point's ordinate.
-   * @return the created instance.
+   * Apply the given translation and return the result.
+   * @param translation the translation to apply as a point.
+   * @return the translation application's result.
    */
-  def apply(abscissa: Short, ordinate: Short) = new Point(abscissa, ordinate)
+  def translate(translation: Point) = Point(abscissa + translation.abscissa, ordinate + translation.ordinate)
 }
