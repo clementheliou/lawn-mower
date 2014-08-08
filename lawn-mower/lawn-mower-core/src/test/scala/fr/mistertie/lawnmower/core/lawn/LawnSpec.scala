@@ -2,13 +2,15 @@ package fr.mistertie.lawnmower.core.lawn
 
 import fr.mistertie.lawnmower.core.cardinalpoint.CardinalPoint._
 import fr.mistertie.lawnmower.core.point.Point
-import fr.mistertie.lawnmower.core.test.UnitSpec
+import fr.mistertie.lawnmower.test.spec.BaseSpec
+import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[Lawn]].
- * @see [[UnitSpec]].
+ * @see [[BaseSpec]].
  */
-class LawnSpec extends UnitSpec {
+@UnitTest
+class LawnSpec extends BaseSpec {
 
   "A lawn without point" should "produce an IllegalArgumentException" in {
     the[IllegalArgumentException] thrownBy {

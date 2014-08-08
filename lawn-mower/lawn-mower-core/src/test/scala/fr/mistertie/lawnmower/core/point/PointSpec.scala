@@ -1,12 +1,14 @@
 package fr.mistertie.lawnmower.core.point
 
-import fr.mistertie.lawnmower.core.test.UnitSpec
+import fr.mistertie.lawnmower.test.spec.BaseSpec
+import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[Point]].
- * @see [[UnitSpec]].
+ * @see [[BaseSpec]].
  */
-class PointSpec extends UnitSpec {
+@UnitTest
+class PointSpec extends BaseSpec {
 
   "A point" should "return the given translation result" in {
     // Arrange

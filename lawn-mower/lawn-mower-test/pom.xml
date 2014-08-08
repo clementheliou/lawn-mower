@@ -2,16 +2,15 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <parent>
-        <groupId>fr.mistertie</groupId>
         <artifactId>lawn-mower</artifactId>
+        <groupId>fr.mistertie</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>fr.mistertie.lawnmower</groupId>
-    <artifactId>lawn-mower-core</artifactId>
+    <artifactId>lawn-mower-test</artifactId>
 
     <build>
         <plugins>
@@ -27,12 +26,6 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>fr.mistertie.lawnmower</groupId>
-            <artifactId>lawn-mower-test</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.11</artifactId>

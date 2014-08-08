@@ -1,13 +1,15 @@
 package fr.mistertie.lawnmower.core.cardinalpoint
 
 import fr.mistertie.lawnmower.core.cardinalpoint.CardinalPoint._
-import fr.mistertie.lawnmower.core.test.UnitSpec
+import fr.mistertie.lawnmower.test.spec.BaseSpec
+import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[CardinalPoint]].
- * @see [[UnitSpec]]
+ * @see [[BaseSpec]]
  */
-class CardinalPointSpec extends UnitSpec {
+@UnitTest
+class CardinalPointSpec extends BaseSpec {
 
   "The North cardinal point" should "return the East one when rotating to the right" in {
     rotateRight(NORTH) should equal(EAST)
