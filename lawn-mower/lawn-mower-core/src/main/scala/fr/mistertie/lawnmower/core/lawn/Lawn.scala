@@ -26,15 +26,32 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
   private var bookedPositions = new HashSet[Point]
 
   /**
-   * Initialise the given position if free. That is to say booking the position without releasing an existing one.
+   * Initialise the given position if free and inside the lawn's bounds. Initialise means "booking the position without
+   * releasing an existing one".
    * @param position the position to be initialised.
-   * @throws IllegalArgumentException if the position is already booked.
+   * @throws IllegalArgumentException if the position is already booked or out of bounds.
    */
   def initPosition(position: Point) {
     if (isBookedAt(position)) {
       throw new IllegalArgumentException("Position already booked: " + position)
     }
+
+    if (isOutOfBounds(position)) {
+      throw new IllegalArgumentException("Position out of bounds: " + position)
+    }
+
     bookedPositions += position
+  }
+
+  /**
+   * Check if the given position is out of the lawn's bounds.
+   * @param position the position to be checked.
+   * @return the checking result.
+   */
+  private def isOutOfBounds(position: Point) = {
+    val abscissas = bottomLeftCorner.abscissa.to(topRightCorner.abscissa)
+    val ordinates = bottomLeftCorner.ordinate.to(topRightCorner.ordinate)
+    !abscissas.contains(position.abscissa) || !ordinates.contains(position.ordinate)
   }
 
   /**
@@ -109,6 +126,18 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
   private def isSouthBoundAt(position: Point) = position.ordinate == bottomLeftCorner.ordinate
 
   /**
+   * Book the next west position from the given one, releasing it. If the next position is out of west bound or
+   * taken, do nothing and return the given position.
+   * @param currentPosition the source position.
+   * @return the next available west position if this one is valid, the current one otherwise.
+   */
+  private def checkAndBookNextWestPosition(currentPosition: Point) = {
+    val nextWestPosition = currentPosition.translate(Point(-1, 0))
+    if (isBookedAt(nextWestPosition) || isWestBoundAt(currentPosition)) currentPosition
+    else bookPosition(currentPosition, nextWestPosition)
+  }
+
+  /**
    * Book the given position releasing the current one.
    * @param currentPosition the current position to release.
    * @param positionToBook the position to book.
@@ -128,20 +157,8 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
   def isBookedAt(position: Point) = bookedPositions.contains(position)
 
   /**
-   * Book the next west position from the given one, releasing it. If the next position is out of west bound or
-   * taken, do nothing and return the given position.
-   * @param currentPosition the source position.
-   * @return the next available west position if this one is valid, the current one otherwise.
-   */
-  private def checkAndBookNextWestPosition(currentPosition: Point) = {
-    val nextWestPosition = currentPosition.translate(Point(-1, 0))
-    if (isBookedAt(nextWestPosition) || isWestBoundAt(currentPosition)) currentPosition
-    else bookPosition(currentPosition, nextWestPosition)
-  }
-
-  /**
    * Check if the given position is at the lawn's west bound.
-   * @param position the position to check.
+   * @param position the position to be checked.
    * @return the checking result.
    */
   private def isWestBoundAt(position: Point) = position.abscissa == bottomLeftCorner.abscissa

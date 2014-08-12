@@ -114,7 +114,7 @@ class LawnSpec extends BaseSpec {
     // Arrange
     val bookedPosition = Point(2, 0)
     val currentPosition = Point(1, 0)
-    val testedObject = Lawn(1, 1)
+    val testedObject = Lawn(2, 2)
 
     testedObject.initPosition(bookedPosition)
     testedObject.initPosition(currentPosition)
@@ -148,7 +148,7 @@ class LawnSpec extends BaseSpec {
 
   it should "not book the next west position if this one is taken" in {
     // Arrange
-    val bookedPosition = Point(0,0)
+    val bookedPosition = Point(0, 0)
     val currentPosition = Point(1, 0)
     val testedObject = Lawn(1, 1)
 
@@ -254,6 +254,50 @@ class LawnSpec extends BaseSpec {
       testedObject.initPosition(positionToInitialise)
 
     } should have message "Position already booked: Point(0,0)"
+  }
+
+  it should "produce an IllegalArgumentException while initialising an out of east bound position" in {
+    the[IllegalArgumentException] thrownBy {
+      // Arrange
+      val testedObject = Lawn(1, 1)
+
+      // Act
+      testedObject.initPosition(Point(2, 1))
+
+    } should have message "Position out of bounds: Point(2,1)"
+  }
+
+  it should "produce an IllegalArgumentException while initialising an out of north bound position" in {
+    the[IllegalArgumentException] thrownBy {
+      // Arrange
+      val testedObject = Lawn(1, 1)
+
+      // Act
+      testedObject.initPosition(Point(1, 2))
+
+    } should have message "Position out of bounds: Point(1,2)"
+  }
+
+  it should "produce an IllegalArgumentException while initialising an out of south bound position" in {
+    the[IllegalArgumentException] thrownBy {
+      // Arrange
+      val testedObject = Lawn(1, 1)
+
+      // Act
+      testedObject.initPosition(Point(0, -1))
+
+    } should have message "Position out of bounds: Point(0,-1)"
+  }
+
+  it should "produce an IllegalArgumentException while initialising an out of west bound position" in {
+    the[IllegalArgumentException] thrownBy {
+      // Arrange
+      val testedObject = Lawn(1, 1)
+
+      // Act
+      testedObject.initPosition(Point(-1, 0))
+
+    } should have message "Position out of bounds: Point(-1,0)"
   }
 
   it should "initialize the given position if this one is free" in {

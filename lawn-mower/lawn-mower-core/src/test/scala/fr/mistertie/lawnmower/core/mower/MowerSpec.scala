@@ -25,6 +25,46 @@ class MowerSpec extends BaseSpec {
     }
   }
 
+  it must "not be created on out of east bound position" in {
+    an[IllegalArgumentException] should be thrownBy {
+      // Arrange
+      val parentLawn = Lawn(1, 1)
+
+      // Act
+      Mower(Point(2, 1), NORTH, parentLawn)
+    }
+  }
+
+  it must "not be created on out of north bound position" in {
+    an[IllegalArgumentException] should be thrownBy {
+      // Arrange
+      val parentLawn = Lawn(1, 1)
+
+      // Act
+      Mower(Point(1, 2), NORTH, parentLawn)
+    }
+  }
+
+  it must "not be created on out of south bound position" in {
+    an[IllegalArgumentException] should be thrownBy {
+      // Arrange
+      val parentLawn = Lawn(1, 1)
+
+      // Act
+      Mower(Point(0, -1), NORTH, parentLawn)
+    }
+  }
+
+  it must "not be created on out of west bound position" in {
+    an[IllegalArgumentException] should be thrownBy {
+      // Arrange
+      val parentLawn = Lawn(1, 1)
+
+      // Act
+      Mower(Point(-1, 0), NORTH, parentLawn)
+    }
+  }
+
   it should "be created on free position" in {
     // Arrange
     val parentLawn = Lawn(1, 1)
