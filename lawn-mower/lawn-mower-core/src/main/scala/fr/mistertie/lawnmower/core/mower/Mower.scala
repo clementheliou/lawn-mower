@@ -12,7 +12,7 @@ import fr.mistertie.lawnmower.core.point.Point
  */
 class Mower private(var position: Point, var orientation: CardinalPoint, val parent: Lawn) {
 
-  parent.initPosition(position)
+  parent.initializePosition(position)
 
   /**
    * Explore the mower's parent lawn from the given actions then print the current position and orientation.

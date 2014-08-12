@@ -98,8 +98,8 @@ class LawnSpec extends BaseSpec {
     val currentPosition = Point(1, 0)
     val testedObject = Lawn(1, 1)
 
-    testedObject.initPosition(currentPosition)
-    testedObject.initPosition(bookedPosition)
+    testedObject.initializePosition(currentPosition)
+    testedObject.initializePosition(bookedPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, NORTH)
@@ -116,8 +116,8 @@ class LawnSpec extends BaseSpec {
     val currentPosition = Point(1, 0)
     val testedObject = Lawn(2, 2)
 
-    testedObject.initPosition(bookedPosition)
-    testedObject.initPosition(currentPosition)
+    testedObject.initializePosition(bookedPosition)
+    testedObject.initializePosition(currentPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, EAST)
@@ -134,8 +134,8 @@ class LawnSpec extends BaseSpec {
     val currentPosition = Point(1, 1)
     val testedObject = Lawn(1, 1)
 
-    testedObject.initPosition(bookedPosition)
-    testedObject.initPosition(currentPosition)
+    testedObject.initializePosition(bookedPosition)
+    testedObject.initializePosition(currentPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, SOUTH)
@@ -152,8 +152,8 @@ class LawnSpec extends BaseSpec {
     val currentPosition = Point(1, 0)
     val testedObject = Lawn(1, 1)
 
-    testedObject.initPosition(bookedPosition)
-    testedObject.initPosition(currentPosition)
+    testedObject.initializePosition(bookedPosition)
+    testedObject.initializePosition(currentPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, WEST)
@@ -243,72 +243,72 @@ class LawnSpec extends BaseSpec {
     result should equal(false)
   }
 
-  it should "produce an IllegalArgumentException while initialising an already booked position" in {
+  it should "produce an IllegalArgumentException while initializing an already booked position" in {
     the[IllegalArgumentException] thrownBy {
       // Arrange
       val testedObject = Lawn(1, 1)
-      val positionToInitialise = Point(0, 0)
-      testedObject.initPosition(positionToInitialise)
+      val positionToInitialize = Point(0, 0)
+      testedObject.initializePosition(positionToInitialize)
 
       // Act
-      testedObject.initPosition(positionToInitialise)
+      testedObject.initializePosition(positionToInitialize)
 
     } should have message "Position already booked: Point(0,0)"
   }
 
-  it should "produce an IllegalArgumentException while initialising an out of east bound position" in {
+  it should "produce an IllegalArgumentException while initializing an out of east bound position" in {
     the[IllegalArgumentException] thrownBy {
       // Arrange
       val testedObject = Lawn(1, 1)
 
       // Act
-      testedObject.initPosition(Point(2, 1))
+      testedObject.initializePosition(Point(2, 1))
 
     } should have message "Position out of bounds: Point(2,1)"
   }
 
-  it should "produce an IllegalArgumentException while initialising an out of north bound position" in {
+  it should "produce an IllegalArgumentException while initializing an out of north bound position" in {
     the[IllegalArgumentException] thrownBy {
       // Arrange
       val testedObject = Lawn(1, 1)
 
       // Act
-      testedObject.initPosition(Point(1, 2))
+      testedObject.initializePosition(Point(1, 2))
 
     } should have message "Position out of bounds: Point(1,2)"
   }
 
-  it should "produce an IllegalArgumentException while initialising an out of south bound position" in {
+  it should "produce an IllegalArgumentException while initializing an out of south bound position" in {
     the[IllegalArgumentException] thrownBy {
       // Arrange
       val testedObject = Lawn(1, 1)
 
       // Act
-      testedObject.initPosition(Point(0, -1))
+      testedObject.initializePosition(Point(0, -1))
 
     } should have message "Position out of bounds: Point(0,-1)"
   }
 
-  it should "produce an IllegalArgumentException while initialising an out of west bound position" in {
+  it should "produce an IllegalArgumentException while initializing an out of west bound position" in {
     the[IllegalArgumentException] thrownBy {
       // Arrange
       val testedObject = Lawn(1, 1)
 
       // Act
-      testedObject.initPosition(Point(-1, 0))
+      testedObject.initializePosition(Point(-1, 0))
 
     } should have message "Position out of bounds: Point(-1,0)"
   }
 
   it should "initialize the given position if this one is free" in {
     // Arrange
-    val positionToInitialise = Point(0, 0)
+    val positionToInitialize = Point(0, 0)
     val testedObject = Lawn(1, 1)
 
     // Act
-    testedObject.initPosition(positionToInitialise)
+    testedObject.initializePosition(positionToInitialize)
 
     // Assert
-    testedObject.isBookedAt(positionToInitialise) should equal(true)
+    testedObject.isBookedAt(positionToInitialize) should equal(true)
   }
 }
