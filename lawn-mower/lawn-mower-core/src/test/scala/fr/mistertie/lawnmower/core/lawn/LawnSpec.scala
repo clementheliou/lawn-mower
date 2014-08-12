@@ -94,63 +94,74 @@ class LawnSpec extends BaseSpec {
 
   it should "not book the next north position if this one is taken" in {
     // Arrange
-    val currentPosition = Point(0, 0)
+    val bookedPosition = Point(1, 1)
+    val currentPosition = Point(1, 0)
     val testedObject = Lawn(1, 1)
 
-    testedObject.checkAndBookNextPosition(currentPosition, NORTH)
-    testedObject.checkAndBookNextPosition(Point(0, -1), NORTH)
+    testedObject.initPosition(currentPosition)
+    testedObject.initPosition(bookedPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, NORTH)
 
     // Assert
     resultingPosition should equal(currentPosition)
+    testedObject.isBookedAt(bookedPosition) should equal(true)
     testedObject.isBookedAt(currentPosition) should equal(true)
   }
 
   it should "not book the next east position if this one is taken" in {
     // Arrange
-    val currentPosition = Point(0, 0)
+    val bookedPosition = Point(2, 0)
+    val currentPosition = Point(1, 0)
     val testedObject = Lawn(1, 1)
 
-    testedObject.checkAndBookNextPosition(currentPosition, EAST)
-    testedObject.checkAndBookNextPosition(Point(-1, 0), EAST)
+    testedObject.initPosition(bookedPosition)
+    testedObject.initPosition(currentPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, EAST)
 
     // Assert
     resultingPosition should equal(currentPosition)
+    testedObject.isBookedAt(bookedPosition) should equal(true)
+    testedObject.isBookedAt(currentPosition) should equal(true)
   }
 
   it should "not book the next south position if this one is taken" in {
     // Arrange
+    val bookedPosition = Point(1, 0)
     val currentPosition = Point(1, 1)
     val testedObject = Lawn(1, 1)
 
-    testedObject.checkAndBookNextPosition(currentPosition, SOUTH)
-    testedObject.checkAndBookNextPosition(Point(1, 2), SOUTH)
+    testedObject.initPosition(bookedPosition)
+    testedObject.initPosition(currentPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, SOUTH)
 
     // Assert
     resultingPosition should equal(currentPosition)
+    testedObject.isBookedAt(bookedPosition) should equal(true)
+    testedObject.isBookedAt(currentPosition) should equal(true)
   }
 
   it should "not book the next west position if this one is taken" in {
     // Arrange
-    val currentPosition = Point(1, 1)
+    val bookedPosition = Point(0,0)
+    val currentPosition = Point(1, 0)
     val testedObject = Lawn(1, 1)
 
-    testedObject.checkAndBookNextPosition(currentPosition, WEST)
-    testedObject.checkAndBookNextPosition(Point(2, 1), WEST)
+    testedObject.initPosition(bookedPosition)
+    testedObject.initPosition(currentPosition)
 
     // Act
     val resultingPosition = testedObject.checkAndBookNextPosition(currentPosition, WEST)
 
     // Assert
     resultingPosition should equal(currentPosition)
+    testedObject.isBookedAt(bookedPosition) should equal(true)
+    testedObject.isBookedAt(currentPosition) should equal(true)
   }
 
   it should "book the next north position if this one is valid and release the current one" in {

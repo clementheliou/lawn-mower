@@ -15,18 +15,24 @@ class Mower private(var position: Point, var orientation: CardinalPoint, val par
   parent.initPosition(position)
 
   /**
-   * Given the mower orientation, rotate it by 90 degree to the left.
+   * Explore the mower's parent lawn from the given actions then print the current position and orientation.
+   * @param actions an ordered List of actions to be executed.
    */
-  def rotatePositionLeft() {
-    orientation = rotateLeft(orientation)
+  def exploreLawn(actions: List[Char]) {
+    actions.foreach { case 'A' => position = parent.checkAndBookNextPosition(position, orientation)
+    case 'D' => orientation = rotateRight(orientation)
+    case 'G' => orientation = rotateLeft(orientation)
+    case _ => // Skip the other ones!
+    }
+
+    println(this)
   }
 
   /**
-   * Given the mower orientation, rotate it by 90 degree to the right.
+   * Display the mower's position and orientation.
+   * @return the string to be displayed.
    */
-  def rotatePositionRight() {
-    orientation = rotateRight(orientation)
-  }
+  override def toString: String = "(%d,%d,%s)".format(position.abscissa, position.ordinate, orientation)
 }
 
 /**
