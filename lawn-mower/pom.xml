@@ -11,6 +11,7 @@
 
     <modules>
         <module>lawn-mower-core</module>
+        <module>lawn-mower-parsing</module>
         <module>lawn-mower-test</module>
     </modules>
 
