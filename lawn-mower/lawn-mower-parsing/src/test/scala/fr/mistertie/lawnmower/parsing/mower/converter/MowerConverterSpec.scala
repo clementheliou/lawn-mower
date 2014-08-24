@@ -11,27 +11,15 @@ import org.scalatest.EitherValues
 @UnitTest
 class MowerConverterSpec extends BaseSpec with EitherValues {
 
-  "A mower converter" should "return the incoming error message if found" in {
-    // Arrange
-    val incomingMessage = "Generated for test purpose"
-    val readContent = Left(incomingMessage)
-
-    // Act
-    val result = convert(readContent)
-
-    // Assert
-    result.left.value should equal(incomingMessage)
-  }
-
   it should "return an error message if incoming position line is invalid" in {
     val invalidFormats = Table("positionLine", "AAAAA", "A A 2", "1", "1 2", "1 2 2", "1 2 Q")
 
     forAll(invalidFormats) { (positionLine: String) =>
       // Arrange
-      val readContent = Right(positionLine, "GAGA")
+      val input = (positionLine, "GAGA")
 
       // Act
-      val result = convert(readContent)
+      val result = convert(input)
 
       // Assert
       result.left.value should equal("Can't convert mower due to invalid content: (%s,GAGA)".format(positionLine))
@@ -43,10 +31,10 @@ class MowerConverterSpec extends BaseSpec with EitherValues {
 
     forAll(invalidFormats) { (actionsLine: String) =>
       // Arrange
-      val readContent = Right("1 2 N", actionsLine)
+      val input = ("1 2 N", actionsLine)
 
       // Act
-      val result = convert(readContent)
+      val result = convert(input)
 
       // Assert
       result.left.value should equal("Can't convert mower due to invalid content: (1 2 N,%s)".format(actionsLine))
@@ -55,10 +43,10 @@ class MowerConverterSpec extends BaseSpec with EitherValues {
 
   it should "return a ParsedMower instance if incoming content is valid" in {
     // Arrange
-    val readContent = Right("1 2 N", "GAGA")
+    val input = ("1 2 N", "GAGA")
 
     // Act
-    val result = convert(readContent)
+    val result = convert(input)
 
     // Assert
     val parsedMower = result.right.value

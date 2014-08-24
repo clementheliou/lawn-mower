@@ -10,10 +10,10 @@ package fr.mistertie.lawnmower.parsing.common.converter
 trait Converter[I, O] {
 
   /**
-   * Convert the given [[Either]] of type I to an [[Either]] of type O.
+   * Convert the given instance of type I to an [[Either]] of type O.
    * @param input the content to be converted.
    * @return the conversion result.
    */
-  def convert(input: Either[String, I]): Either[String, O]
+  def convert(input: I): Either[String, O]
 }
 
