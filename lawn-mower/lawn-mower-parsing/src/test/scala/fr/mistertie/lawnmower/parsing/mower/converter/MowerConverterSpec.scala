@@ -23,7 +23,7 @@ class MowerConverterSpec extends BaseSpec with EitherValues {
     result.left.value should equal(incomingMessage)
   }
 
-  it should "return an error message if incoming position line format is invalid" in {
+  it should "return an error message if incoming position line is invalid" in {
     val invalidFormats = Table("positionLine", "AAAAA", "A A 2", "1", "1 2", "1 2 2", "1 2 Q")
 
     forAll(invalidFormats) { (positionLine: String) =>
@@ -38,7 +38,7 @@ class MowerConverterSpec extends BaseSpec with EitherValues {
     }
   }
 
-  it should "return an error message if incoming actions line format is invalid" in {
+  it should "return an error message if incoming actions line is invalid" in {
     val invalidFormats = Table("actionsLine", "1 2 N", "QQQQ", "ADQHFLKF", "G A G")
 
     forAll(invalidFormats) { (actionsLine: String) =>
