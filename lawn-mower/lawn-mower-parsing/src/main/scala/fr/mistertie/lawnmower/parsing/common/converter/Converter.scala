@@ -1,5 +1,7 @@
 package fr.mistertie.lawnmower.parsing.common.converter
 
+import fr.mistertie.lawnmower.parsing.lawn.converter.LawnConverter
+
 /**
  * Converter from the given input type (I) to the output one (O).
  * Inspired by David Galichet's talk (@dgalichet) at Paris Scala User Group.
@@ -17,3 +19,14 @@ trait Converter[I, O] {
   def convert(input: I): Either[String, O]
 }
 
+/**
+ * Companion object used to declare the available implicit converters thanks to Uniform Access Principle (UAP).
+ */
+object Converter {
+
+  /**
+   * Get an implicit [[LawnConverter]].
+   * @return the [[LawnConverter]] object.
+   */
+  implicit def lawnConverter = LawnConverter
+}
