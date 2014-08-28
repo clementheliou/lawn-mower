@@ -18,22 +18,14 @@ class LawnSpec extends BaseSpec {
     } should have message "A lawn should have at least one point."
   }
 
-  "A lawn with negative top right corner's abscissa" should "produce an IllegalArgumentException" in {
-    the[IllegalArgumentException] thrownBy {
-      Lawn(-4, 12)
-    } should have message "A lawn can't have top right corner with negative coordinate."
-  }
+  "A lawn with negative top right corner's coordinate" should "produce an IllegalArgument Exception" in {
+    val invalidCoordinates = Table(("abscissa", "ordinate"), (-4, 12), (12, -4), (-4, -4))
 
-  "A lawn with negative top right corner's ordinate" should "produce an IllegalArgumentException" in {
-    the[IllegalArgumentException] thrownBy {
-      Lawn(12, -4)
-    } should have message "A lawn can't have top right corner with negative coordinate."
-  }
-
-  "A lawn with negatives top right corner's coordinates" should "produce an IllegalArgumentException" in {
-    the[IllegalArgumentException] thrownBy {
-      Lawn(-4, -4)
-    } should have message "A lawn can't have top right corner with negative coordinate."
+    forAll(invalidCoordinates) { (abscissa: Int, ordinate: Int) =>
+      the[IllegalArgumentException] thrownBy {
+        Lawn(abscissa, ordinate)
+      } should have message "A lawn can't have top right corner with negative coordinate."
+    }
   }
 
   "A lawn" should "not book the next north position if this one is out of bound" in {
@@ -256,48 +248,18 @@ class LawnSpec extends BaseSpec {
     } should have message "Position already booked: Point(0,0)"
   }
 
-  it should "produce an IllegalArgumentException while initializing an out of east bound position" in {
-    the[IllegalArgumentException] thrownBy {
-      // Arrange
-      val testedObject = Lawn(1, 1)
+  it should "produce an IllegalArgumentException while initializing an out of bound position" in {
+    val invalidPositions = Table(("abscissa", "ordinate"), (2, 1), (1, 2), (0, -1), (-1, 0))
 
-      // Act
-      testedObject.initializePosition(Point(2, 1))
+    forAll(invalidPositions) { (abscissa: Int, ordinate: Int) =>
+      the[IllegalArgumentException] thrownBy {
+        // Arrange
+        val testedObject = Lawn(1, 1)
 
-    } should have message "Position out of bounds: Point(2,1)"
-  }
-
-  it should "produce an IllegalArgumentException while initializing an out of north bound position" in {
-    the[IllegalArgumentException] thrownBy {
-      // Arrange
-      val testedObject = Lawn(1, 1)
-
-      // Act
-      testedObject.initializePosition(Point(1, 2))
-
-    } should have message "Position out of bounds: Point(1,2)"
-  }
-
-  it should "produce an IllegalArgumentException while initializing an out of south bound position" in {
-    the[IllegalArgumentException] thrownBy {
-      // Arrange
-      val testedObject = Lawn(1, 1)
-
-      // Act
-      testedObject.initializePosition(Point(0, -1))
-
-    } should have message "Position out of bounds: Point(0,-1)"
-  }
-
-  it should "produce an IllegalArgumentException while initializing an out of west bound position" in {
-    the[IllegalArgumentException] thrownBy {
-      // Arrange
-      val testedObject = Lawn(1, 1)
-
-      // Act
-      testedObject.initializePosition(Point(-1, 0))
-
-    } should have message "Position out of bounds: Point(-1,0)"
+        // Act
+        testedObject.initializePosition(Point(abscissa, ordinate))
+      } should have message "Position out of bounds: Point(%s,%s)".format(abscissa, ordinate)
+    }
   }
 
   it should "initialize the given position if this one is free" in {

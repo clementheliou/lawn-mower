@@ -111,5 +111,5 @@ object Lawn {
    * @param topRightOrdinate the top right point's ordinate.
    * @return the created instance.
    */
-  def apply(topRightAbscissa: Short, topRightOrdinate: Short) = new Lawn(topRightAbscissa, topRightOrdinate)
+  def apply(topRightAbscissa: Int, topRightOrdinate: Int) = new Lawn(topRightAbscissa, topRightOrdinate)
 }
