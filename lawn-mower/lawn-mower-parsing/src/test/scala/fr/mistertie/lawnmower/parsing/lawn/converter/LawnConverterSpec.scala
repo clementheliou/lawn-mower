@@ -3,7 +3,6 @@ package fr.mistertie.lawnmower.parsing.lawn.converter
 import fr.mistertie.lawnmower.parsing.lawn.converter.LawnConverter.convert
 import fr.mistertie.lawnmower.test.spec.BaseSpec
 import fr.mistertie.lawnmower.test.tag.flatspec.{IntegrationTest, UnitTest}
-import org.scalatest.EitherValues
 
 import scala.collection.immutable.List.{empty => emptyList}
 
@@ -11,7 +10,7 @@ import scala.collection.immutable.List.{empty => emptyList}
 /**
  * Test cases about [[LawnConverter]].
  */
-class LawnConverterSpec extends BaseSpec with EitherValues {
+class LawnConverterSpec extends BaseSpec {
 
   it should "return an error message if the input list has an invalid size" taggedAs UnitTest in {
     // Arrange

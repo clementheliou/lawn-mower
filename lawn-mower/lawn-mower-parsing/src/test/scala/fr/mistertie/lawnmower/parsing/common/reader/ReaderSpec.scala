@@ -3,13 +3,12 @@ package fr.mistertie.lawnmower.parsing.common.reader
 import fr.mistertie.lawnmower.parsing.common.converter.Converter
 import fr.mistertie.lawnmower.test.spec.BaseSpec
 import fr.mistertie.lawnmower.test.tag.UnitTest
-import org.scalatest.EitherValues
 
 /**
  * Test cases about [[Reader]] class.
  */
 @UnitTest
-class ReaderSpec extends BaseSpec with EitherValues {
+class ReaderSpec extends BaseSpec {
 
   /**
    * Dummy implicit converter from String to String. This implementation always returns the input value and allows the

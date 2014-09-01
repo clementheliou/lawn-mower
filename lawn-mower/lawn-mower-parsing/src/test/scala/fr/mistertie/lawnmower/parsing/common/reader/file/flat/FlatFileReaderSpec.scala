@@ -4,13 +4,12 @@ import java.io.File
 
 import fr.mistertie.lawnmower.test.spec.BaseSpec
 import fr.mistertie.lawnmower.test.tag.UnitTest
-import org.scalatest.EitherValues
 
 /**
  * Test cases about [[FlatFileReader]].
  */
 @UnitTest
-class FlatFileReaderSpec extends BaseSpec with EitherValues {
+class FlatFileReaderSpec extends BaseSpec {
 
   "A FlatFileReader" should "return an error message when source file is not found" in {
     // Arrange

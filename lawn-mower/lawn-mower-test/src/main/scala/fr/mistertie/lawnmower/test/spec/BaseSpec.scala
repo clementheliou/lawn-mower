@@ -1,11 +1,11 @@
 package fr.mistertie.lawnmower.test.spec
 
 import org.scalatest.prop.TableDrivenPropertyChecks
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{EitherValues, FlatSpec, Matchers}
 
 /**
  * Base spec for both integration and unit tests using ScalaTest.
- * @see [[FlatSpec]], [[Matchers]], [[TableDrivenPropertyChecks]]
+ * @see [[EitherValues]],[[FlatSpec]], [[Matchers]], [[TableDrivenPropertyChecks]]
  */
-abstract class BaseSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks {
+abstract class BaseSpec extends FlatSpec with Matchers with TableDrivenPropertyChecks with EitherValues {
 }
