@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>lawn-mower-cli</module>
         <module>lawn-mower-core</module>
         <module>lawn-mower-parsing</module>
         <module>lawn-mower-test</module>
