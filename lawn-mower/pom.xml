@@ -21,8 +21,9 @@
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <scala-library.version>2.11.1</scala-library.version>
-        <scalatest_2.11-version>2.2.0</scalatest_2.11-version>
+        <scalatest_2.11.version>2.2.0</scalatest_2.11.version>
         <scalatest-maven-plugin.version>1.0</scalatest-maven-plugin.version>
+        <scopt_2.11.version>3.2.0</scopt_2.11.version>
     </properties>
 
     <build>
@@ -82,12 +83,17 @@
             <dependency>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest_2.11</artifactId>
-                <version>${scalatest_2.11-version}</version>
+                <version>${scalatest_2.11.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
                 <version>${scala-library.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.scopt</groupId>
+                <artifactId>scopt_2.11</artifactId>
+                <version>${scopt_2.11.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
