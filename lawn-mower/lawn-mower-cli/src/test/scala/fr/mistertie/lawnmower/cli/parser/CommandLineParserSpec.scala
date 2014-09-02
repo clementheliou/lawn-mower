@@ -4,13 +4,12 @@ import java.io.File
 
 import fr.mistertie.lawnmower.test.spec.BaseSpec
 import fr.mistertie.lawnmower.test.tag.UnitTest
-import org.scalatest.OptionValues
 
 /**
  * Test cases about [[CommandLineParser]].
  */
 @UnitTest
-class CommandLineParserSpec extends BaseSpec with OptionValues {
+class CommandLineParserSpec extends BaseSpec {
 
   "A command-line parser" should "fail parsing invalid arguments" in {
     val existingFilePath = getClass.getResource("/existingFile").getPath

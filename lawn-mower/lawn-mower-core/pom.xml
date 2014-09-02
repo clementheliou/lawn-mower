@@ -27,19 +27,19 @@
     </build>
 
     <dependencies>
+
+        <!-- Internal -->
         <dependency>
             <groupId>fr.mistertie.lawnmower</groupId>
             <artifactId>lawn-mower-test</artifactId>
-            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- External -->
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.11</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

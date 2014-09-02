@@ -77,9 +77,27 @@
         </pluginManagement>
     </build>
 
-
     <dependencyManagement>
         <dependencies>
+
+            <!-- Internal -->
+            <dependency>
+                <groupId>fr.mistertie.lawnmower</groupId>
+                <artifactId>lawn-mower-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.mistertie.lawnmower</groupId>
+                <artifactId>lawn-mower-parsing</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.mistertie.lawnmower</groupId>
+                <artifactId>lawn-mower-test</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- External -->
             <dependency>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest_2.11</artifactId>
@@ -98,4 +116,12 @@
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+
+        <!-- External -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+        </dependency>
+    </dependencies>
 </project>
