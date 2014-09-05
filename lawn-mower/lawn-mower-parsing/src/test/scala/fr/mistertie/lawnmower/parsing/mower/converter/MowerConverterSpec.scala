@@ -41,15 +41,16 @@ class MowerConverterSpec extends BaseSpec {
   }
 
   it should "return a ParsedMower instance if incoming content is valid" in {
-    // Arrange
-    val input = ("1 2 N", "GAGA")
+    val validContent = Table("content", ("1 2 N", "GA"), (" 1  2  N ", " GA "))
 
-    // Act
-    val result = convert(input)
+    forAll(validContent) { (content) =>
+      // Act
+      val result = convert(content)
 
-    // Assert
-    val parsedMower = result.right.value
-    parsedMower.initialPosition should equal((1, 2, 'N'))
-    parsedMower.actions should equal(List('G', 'A', 'G', 'A'))
+      // Assert
+      val parsedMower = result.right.value
+      parsedMower.initialPosition should equal((1, 2, 'N'))
+      parsedMower.actions should equal(List('G', 'A'))
+    }
   }
 }

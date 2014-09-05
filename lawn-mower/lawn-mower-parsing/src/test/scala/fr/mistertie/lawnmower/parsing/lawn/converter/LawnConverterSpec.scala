@@ -56,20 +56,21 @@ class LawnConverterSpec extends BaseSpec {
   }
 
   it should "return a ParsedLawn instance if incoming content is valid" taggedAs IntegrationTest in {
-    // Arrange
-    val input = List("5 5", "1 2 N", "GA")
+    val validContent = Table("content", List("5 5", "1 2 N", "GA"), List(" 5  5 ", " 1  2  N ", " GA "))
 
-    // Act
-    val result = convert(input)
+    forAll(validContent) { (content) =>
+      // Act
+      val result = convert(content)
 
-    // Assert
-    val parsedLawn = result.right.value
-    parsedLawn.topRightCorner should equal((5, 5))
-    parsedLawn.mowers.size should equal(1)
+      // Assert
+      val parsedLawn = result.right.value
+      parsedLawn.topRightCorner should equal((5, 5))
+      parsedLawn.mowers.size should equal(1)
 
-    val parsedMower = parsedLawn.mowers.head
-    parsedMower.initialPosition should equal((1, 2, 'N'))
-    parsedMower.actions should equal(List('G', 'A'))
+      val parsedMower = parsedLawn.mowers.head
+      parsedMower.initialPosition should equal((1, 2, 'N'))
+      parsedMower.actions should equal(List('G', 'A'))
+    }
   }
 
 }
