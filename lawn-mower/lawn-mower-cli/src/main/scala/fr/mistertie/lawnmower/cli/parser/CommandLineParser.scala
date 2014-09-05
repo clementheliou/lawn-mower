@@ -4,6 +4,11 @@ import java.io.File
 
 import scopt.OptionParser
 
+/**
+ * Parser of command-line's arguments filling its result inside a [[CommandLineParsingResult]] instance and
+ * displaying an usage output if the input is invalid.
+ * @see [[OptionParser]]
+ */
 object CommandLineParser extends OptionParser[CommandLineParsingResult]("lawn-mower-cli") {
 
   arg[File]("<file>") text "source file path" action { (argument, parsingResult) =>
