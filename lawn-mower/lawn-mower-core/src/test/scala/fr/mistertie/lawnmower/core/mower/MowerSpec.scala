@@ -26,9 +26,9 @@ class MowerSpec extends BaseSpec {
   }
 
   it must "not be created on out of bound position" in {
-    val invalidPositions = Table(("abscissa","ordinate"),(2,1),(1,2),(0,-1),(-1,0))
+    val invalidPositions = Table(("abscissa", "ordinate"), (2, 1), (1, 2), (0, -1), (-1, 0))
 
-    forAll(invalidPositions){(abscissa:Int, ordinate:Int)=>
+    forAll(invalidPositions) { (abscissa: Int, ordinate: Int) =>
       an[IllegalArgumentException] should be thrownBy {
         // Arrange
         val parentLawn = Lawn(1, 1)
@@ -59,11 +59,10 @@ class MowerSpec extends BaseSpec {
     val testedObject = Mower(initialPosition, initialOrientation, parentLawn)
 
     // Act
-    testedObject.exploreLawn(List('T', 'Q', 'P'))
+    val result = testedObject.exploreLawn(List('T', 'Q', 'P'))
 
     // Assert
-    testedObject.orientation should equal(initialOrientation)
-    testedObject.position should equal(initialPosition)
+    result should equal((initialPosition.abscissa, initialPosition.ordinate, initialOrientation))
   }
 
   it should "conserve its orientation after 4 rotations by 90 degree to the left" in {
@@ -74,11 +73,10 @@ class MowerSpec extends BaseSpec {
     val testedObject = Mower(initialPosition, initialOrientation, parentLawn)
 
     // Act
-    testedObject.exploreLawn(List('G', 'G', 'G', 'G'))
+    val result = testedObject.exploreLawn(List('G', 'G', 'G', 'G'))
 
     // Assert
-    testedObject.orientation should equal(initialOrientation)
-    testedObject.position should equal(initialPosition)
+    result should equal((initialPosition.abscissa, initialPosition.ordinate, initialOrientation))
   }
 
   it should "conserve its orientation after 4 rotations by 90 degree to the right" in {
@@ -89,11 +87,10 @@ class MowerSpec extends BaseSpec {
     val testedObject = Mower(initialPosition, initialOrientation, parentLawn)
 
     // Act
-    testedObject.exploreLawn(List('D', 'D', 'D', 'D'))
+    val result = testedObject.exploreLawn(List('D', 'D', 'D', 'D'))
 
     // Assert
-    testedObject.orientation should equal(initialOrientation)
-    testedObject.position should equal(initialPosition)
+    result should equal((initialPosition.abscissa, initialPosition.ordinate, initialOrientation))
   }
 
   it should "conserve its position after exploration attempts out of south and west bounds" in {
@@ -105,11 +102,10 @@ class MowerSpec extends BaseSpec {
 
 
     // Act
-    testedObject.exploreLawn(List('A', 'D', 'A'))
+    val result = testedObject.exploreLawn(List('A', 'D', 'A'))
 
     // Assert
-    testedObject.orientation should equal(WEST)
-    testedObject.position should equal(initialPosition)
+    result should equal((initialPosition.abscissa, initialPosition.ordinate, WEST))
   }
 
   it should "conserve its position after exploration attempts out of east and north bounds" in {
@@ -120,11 +116,10 @@ class MowerSpec extends BaseSpec {
     val testedObject = Mower(initialPosition, initialOrientation, parentLawn)
 
     // Act
-    testedObject.exploreLawn(List('A', 'D', 'A'))
+    val result = testedObject.exploreLawn(List('A', 'D', 'A'))
 
     // Assert
-    testedObject.orientation should equal(EAST)
-    testedObject.position should equal(initialPosition)
+    result should equal((initialPosition.abscissa, initialPosition.ordinate, EAST))
   }
 
   it should "conserve its position after exploration attempts on booked south and west points" in {
@@ -139,11 +134,10 @@ class MowerSpec extends BaseSpec {
 
 
     // Act
-    testedObject.exploreLawn(List('A', 'D', 'A'))
+    val result = testedObject.exploreLawn(List('A', 'D', 'A'))
 
     // Assert
-    testedObject.orientation should equal(WEST)
-    testedObject.position should equal(initialPosition)
+    result should equal((initialPosition.abscissa, initialPosition.ordinate, WEST))
 
   }
 
@@ -159,11 +153,10 @@ class MowerSpec extends BaseSpec {
 
 
     // Act
-    testedObject.exploreLawn(List('A', 'D', 'A'))
+    val result = testedObject.exploreLawn(List('A', 'D', 'A'))
 
     // Assert
-    testedObject.orientation should equal(EAST)
-    testedObject.position should equal(initialPosition)
+    result should equal((initialPosition.abscissa, initialPosition.ordinate, EAST))
   }
 
   it should "explore a lawn without booked positions, staying inside its bounds" in {
@@ -174,10 +167,9 @@ class MowerSpec extends BaseSpec {
     val testedObject = Mower(initialPosition, initialOrientation, parentLawn)
 
     // Act
-    testedObject.exploreLawn(List('G', 'A', 'G', 'A', 'G', 'A', 'G', 'A', 'A'))
+    val result = testedObject.exploreLawn(List('G', 'A', 'G', 'A', 'G', 'A', 'G', 'A', 'A'))
 
     // Assert
-    testedObject.orientation should equal(NORTH)
-    testedObject.position should equal(Point(1, 3))
+    result should equal((1, 3, NORTH))
   }
 }

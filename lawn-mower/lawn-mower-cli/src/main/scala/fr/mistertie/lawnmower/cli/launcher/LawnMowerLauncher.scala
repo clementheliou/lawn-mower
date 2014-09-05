@@ -19,7 +19,7 @@ object LawnMowerLauncher {
 
   /**
    * Launch the application from the given source file. 1) Parse file; 2) create lawn and mowers; 3) execute their
-   * actions.
+   * actions and print the resulting position.
    * @param sourceFile the source file to be used.
    * @return the launch result as a [[Try]] which type is [[Unit]].
    */
@@ -30,7 +30,7 @@ object LawnMowerLauncher {
       val lawn = Lawn(lawnAbscissa, lawnOrdinate)
 
       parsedLawn.mowers map { mower => (createMowerFrom(mower.initialPosition, lawn),
-        mower.actions)} foreach { case (mower, actions) => mower.exploreLawn(actions)}
+        mower.actions)} foreach { case (mower, actions) => println(mower.exploreLawn(actions))}
     }
   }
 

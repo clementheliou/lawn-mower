@@ -15,17 +15,18 @@ class Mower private(var position: Point, var orientation: CardinalPoint, val par
   parent.initializePosition(position)
 
   /**
-   * Explore the mower's parent lawn from the given actions then print the current position and orientation.
+   * Explore the mower's parent lawn from the given actions then return the current position and orientation.
    * @param actions an ordered List of actions to be executed.
+   * @return a tuple (abscissa, ordinate, orientation).
    */
-  def exploreLawn(actions: List[Char]) {
+  def exploreLawn(actions: List[Char]) = {
     actions.foreach { case 'A' => position = parent.checkAndBookNextPosition(position, orientation)
     case 'D' => orientation = rotateRight(orientation)
     case 'G' => orientation = rotateLeft(orientation)
     case _ => // Skip the other ones!
     }
 
-    println(this)
+    (position.abscissa, position.ordinate, orientation)
   }
 
   /**
