@@ -20,7 +20,7 @@ class LawnMowerLauncherSpec extends BaseSpec {
 
     // Assert
     result.isFailure should equal(true)
-    result.failed.get should have message "missingFile (No such file or directory)"
+    result.failed.get.getMessage should startWith("java.io.FileNotFoundException: missingFile")
   }
 
   it should "return an exception when read file has an invalid size" in {

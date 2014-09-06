@@ -25,7 +25,7 @@ object FlatFileReader {
       source = Option(fromFile(file))
       Right(source.get.getLines().toList)
     } catch {
-      case NonFatal(e) => Left(e.getMessage)
+      case NonFatal(e) => Left(e.toString)
     } finally {
       source.foreach(_.close())
     }

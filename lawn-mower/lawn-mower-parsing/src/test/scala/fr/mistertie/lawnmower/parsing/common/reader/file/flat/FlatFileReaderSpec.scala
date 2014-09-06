@@ -19,7 +19,7 @@ class FlatFileReaderSpec extends BaseSpec {
     val result = FlatFileReader(missingFile)
 
     // Assert
-    result.reading().left.value should equal("missingFile (No such file or directory)")
+    result.reading().left.value should startWith("java.io.FileNotFoundException: missingFile")
   }
 
   it should "return content as lines when source file is found" in {
