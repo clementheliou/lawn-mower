@@ -9,20 +9,14 @@ import scala.sys.exit
 import scala.util.Try
 
 /**
- * Main class of the project that must remain an entry point with as little logic as possible.
+ * Main class of the project that must remain an entry point with as little logic as possible. Delegate the arguments
+ * parsing to a [[CommandLineParser]] and the application launch to a [[LawnMowerLauncher]].
  */
-object LawnMowerApplication {
+object LawnMowerApplication extends App {
 
-  /**
-   * Entry point of the project parsing the arguments and starting the application. Delegate the arguments parsing to
-   * a [[CommandLineParser]] and the application launch to a [[LawnMowerLauncher]].
-   * @param args the application's arguments
-   */
-  def main(args: Array[String]) {
-    parseArguments(args) match {
-      case Some(arguments) => Try(launch(arguments.file)).recover { case _ => exit(2)}
-      case None => exit(1)
-    }
-
+  parseArguments(args) match {
+    case Some(arguments) => Try(launch(arguments.file)).recover { case _ => exit(2)}
+    case None => exit(1)
   }
+
 }
