@@ -17,6 +17,7 @@
     </modules>
 
     <properties>
+        <java.target.version>1.6</java.target.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-jar-plugin.version>2.5</maven-jar-plugin.version>
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
@@ -43,6 +44,9 @@
                         </execution>
                     </executions>
                     <configuration>
+                        <args>
+                            <arg>-target:jvm-${java.target.version}</arg>
+                        </args>
                         <includes>
                             <include>**/*.scala</include>
                         </includes>
@@ -53,6 +57,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <target>${java.target.version}</target>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
