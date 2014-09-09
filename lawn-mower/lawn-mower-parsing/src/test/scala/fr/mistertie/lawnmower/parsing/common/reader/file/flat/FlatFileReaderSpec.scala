@@ -7,6 +7,7 @@ import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[FlatFileReader]].
+ * @see [[BaseSpec]].
  */
 @UnitTest
 class FlatFileReaderSpec extends BaseSpec {

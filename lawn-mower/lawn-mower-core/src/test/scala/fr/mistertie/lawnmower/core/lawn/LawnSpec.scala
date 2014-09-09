@@ -38,8 +38,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(currentPosition) should equal(true)
-    testedObject.isBookedAt(Point(0, 2)) should equal(false)
+    testedObject.isBooked(currentPosition) should equal(true)
+    testedObject.isBooked(Point(0, 2)) should equal(false)
   }
 
   it should "not book the next east position if this one is out of bound" in {
@@ -52,8 +52,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(currentPosition) should equal(true)
-    testedObject.isBookedAt(Point(2, 0)) should equal(false)
+    testedObject.isBooked(currentPosition) should equal(true)
+    testedObject.isBooked(Point(2, 0)) should equal(false)
   }
 
   it should "not book the next south position if this one is out of bound" in {
@@ -66,8 +66,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(currentPosition) should equal(true)
-    testedObject.isBookedAt(Point(1, -1)) should equal(false)
+    testedObject.isBooked(currentPosition) should equal(true)
+    testedObject.isBooked(Point(1, -1)) should equal(false)
   }
 
   it should "not book the next west position if this one is out of bound" in {
@@ -80,8 +80,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(currentPosition) should equal(true)
-    testedObject.isBookedAt(Point(-1, 1)) should equal(false)
+    testedObject.isBooked(currentPosition) should equal(true)
+    testedObject.isBooked(Point(-1, 1)) should equal(false)
   }
 
   it should "not book the next north position if this one is taken" in {
@@ -98,8 +98,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(bookedPosition) should equal(true)
-    testedObject.isBookedAt(currentPosition) should equal(true)
+    testedObject.isBooked(bookedPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(true)
   }
 
   it should "not book the next east position if this one is taken" in {
@@ -116,8 +116,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(bookedPosition) should equal(true)
-    testedObject.isBookedAt(currentPosition) should equal(true)
+    testedObject.isBooked(bookedPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(true)
   }
 
   it should "not book the next south position if this one is taken" in {
@@ -134,8 +134,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(bookedPosition) should equal(true)
-    testedObject.isBookedAt(currentPosition) should equal(true)
+    testedObject.isBooked(bookedPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(true)
   }
 
   it should "not book the next west position if this one is taken" in {
@@ -152,8 +152,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(currentPosition)
-    testedObject.isBookedAt(bookedPosition) should equal(true)
-    testedObject.isBookedAt(currentPosition) should equal(true)
+    testedObject.isBooked(bookedPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(true)
   }
 
   it should "book the next north position if this one is valid and release the current one" in {
@@ -166,8 +166,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(Point(1, 1))
-    testedObject.isBookedAt(currentPosition) should equal(false)
-    testedObject.isBookedAt(resultingPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(false)
+    testedObject.isBooked(resultingPosition) should equal(true)
   }
 
   it should "book the next east position if this one is valid and release the current one" in {
@@ -180,8 +180,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(Point(1, 1))
-    testedObject.isBookedAt(currentPosition) should equal(false)
-    testedObject.isBookedAt(resultingPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(false)
+    testedObject.isBooked(resultingPosition) should equal(true)
   }
 
   it should "book the next south position if this one is valid and release the current one" in {
@@ -194,8 +194,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(Point(1, 0))
-    testedObject.isBookedAt(currentPosition) should equal(false)
-    testedObject.isBookedAt(resultingPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(false)
+    testedObject.isBooked(resultingPosition) should equal(true)
   }
 
   it should "book the next west position if this one is valid and released the current one" in {
@@ -208,8 +208,8 @@ class LawnSpec extends BaseSpec {
 
     // Assert
     resultingPosition should equal(Point(0, 1))
-    testedObject.isBookedAt(currentPosition) should equal(false)
-    testedObject.isBookedAt(resultingPosition) should equal(true)
+    testedObject.isBooked(currentPosition) should equal(false)
+    testedObject.isBooked(resultingPosition) should equal(true)
   }
 
   it should "declare the given position as booked if this one is not free" in {
@@ -218,7 +218,7 @@ class LawnSpec extends BaseSpec {
     val bookedPosition = testedObject.checkAndBookNextPosition(Point(0, 0), NORTH)
 
     // Act
-    val result = testedObject.isBookedAt(bookedPosition)
+    val result = testedObject.isBooked(bookedPosition)
 
     // Assert
     result should equal(true)
@@ -229,7 +229,7 @@ class LawnSpec extends BaseSpec {
     val testedObject = Lawn(1, 1)
 
     // Act
-    val result = testedObject.isBookedAt(Point(0, 0))
+    val result = testedObject.isBooked(Point(0, 0))
 
     // Assert
     result should equal(false)
@@ -271,6 +271,6 @@ class LawnSpec extends BaseSpec {
     testedObject.initializePosition(positionToInitialize)
 
     // Assert
-    testedObject.isBookedAt(positionToInitialize) should equal(true)
+    testedObject.isBooked(positionToInitialize) should equal(true)
   }
 }

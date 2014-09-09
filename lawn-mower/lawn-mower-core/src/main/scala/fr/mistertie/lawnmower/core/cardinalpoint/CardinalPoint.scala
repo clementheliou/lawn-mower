@@ -11,10 +11,10 @@ object CardinalPoint extends Enumeration {
    */
   type CardinalPoint = Value
 
-  val NORTH = Value('N')
-  val EAST = Value('E')
-  val SOUTH = Value('S')
-  val WEST = Value('W')
+  val NORTH = Value("N")
+  val EAST = Value("E")
+  val SOUTH = Value("S")
+  val WEST = Value("W")
 
   /**
    * Given the source cardinal point, rotate it by 90 degree to the left.

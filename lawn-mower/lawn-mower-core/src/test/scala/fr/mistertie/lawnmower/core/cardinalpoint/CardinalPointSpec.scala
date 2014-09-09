@@ -6,7 +6,7 @@ import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[CardinalPoint]].
- * @see [[BaseSpec]]
+ * @see [[BaseSpec]].
  */
 @UnitTest
 class CardinalPointSpec extends BaseSpec {

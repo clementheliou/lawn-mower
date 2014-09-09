@@ -18,7 +18,7 @@ Deux possibilités s'offrent à vous:
 #### Pré-requis ####
 Vous devez disposer d'un JRE en version 6 ou supérieure.
 #### Etape n°1: télécharger l'application ####
-Téléchargez la [dernière version](https://bitbucket.org/mistertie/xebia-test/downloads/lawn-mower-cli-1.0-SNAPSHOT-jar-with-dependencies.jar) de l'application en date du **07/07/2014**.
+Téléchargez la [dernière version](https://bitbucket.org/mistertie/xebia-test/downloads/lawn-mower-cli-1.0-SNAPSHOT-jar-with-dependencies.jar) de l'application en date du **09/09/2014**.
 #### Etape n°2: lancer l'application ####
 Placez-vous dans le dossier où se trouve le JAR téléchargé (`lawn-mower-cli-1.0-SNAPSHOT-jar-with-dependencies.jar`) que vous pouvez lancer avec la commande suivante:
 

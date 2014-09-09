@@ -6,6 +6,7 @@ import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[MowerConverter]].
+ * @see [[BaseSpec]].
  */
 @UnitTest
 class MowerConverterSpec extends BaseSpec {

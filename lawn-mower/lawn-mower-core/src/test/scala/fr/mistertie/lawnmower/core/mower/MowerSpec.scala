@@ -28,7 +28,7 @@ class MowerSpec extends BaseSpec {
   it must "not be created on out of bound position" in {
     val invalidPositions = Table(("abscissa", "ordinate"), (2, 1), (1, 2), (0, -1), (-1, 0))
 
-    forAll(invalidPositions) { (abscissa: Int, ordinate: Int) =>
+    forAll(invalidPositions) { (abscissa, ordinate) =>
       an[IllegalArgumentException] should be thrownBy {
         // Arrange
         val parentLawn = Lawn(1, 1)
@@ -48,7 +48,7 @@ class MowerSpec extends BaseSpec {
     Mower(initialPosition, NORTH, parentLawn)
 
     // Assert
-    parentLawn.isBookedAt(initialPosition) should equal(true)
+    parentLawn.isBooked(initialPosition) should equal(true)
   }
 
   it should "ignore invalid actions during exploring" in {
@@ -100,7 +100,6 @@ class MowerSpec extends BaseSpec {
     val initialPosition = Point(0, 0)
     val testedObject = Mower(initialPosition, initialOrientation, parentLawn)
 
-
     // Act
     val result = testedObject.exploreLawn(List('A', 'D', 'A'))
 
@@ -132,7 +131,6 @@ class MowerSpec extends BaseSpec {
     Mower(Point(0, 1), NORTH, parentLawn)
     Mower(Point(1, 0), NORTH, parentLawn)
 
-
     // Act
     val result = testedObject.exploreLawn(List('A', 'D', 'A'))
 
@@ -150,7 +148,6 @@ class MowerSpec extends BaseSpec {
 
     Mower(Point(0, 1), NORTH, parentLawn)
     Mower(Point(1, 0), NORTH, parentLawn)
-
 
     // Act
     val result = testedObject.exploreLawn(List('A', 'D', 'A'))

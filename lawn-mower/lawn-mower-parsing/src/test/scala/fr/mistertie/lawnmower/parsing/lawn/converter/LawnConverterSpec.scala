@@ -9,6 +9,7 @@ import scala.collection.immutable.List.{empty => emptyList}
 
 /**
  * Test cases about [[LawnConverter]].
+ * @see [[BaseSpec]].
  */
 class LawnConverterSpec extends BaseSpec {
 

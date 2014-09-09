@@ -6,6 +6,7 @@ import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[Reader]] class.
+ * @see [[BaseSpec]].
  */
 @UnitTest
 class ReaderSpec extends BaseSpec {
@@ -15,7 +16,7 @@ class ReaderSpec extends BaseSpec {
    * [[Reader]] isolated testing.
    */
   implicit val stringToStringDummyConverter = new Converter[String, String] {
-    def convert(input: String): Either[String, String] = Right(input)
+    def convert(input: String) = Right(input)
   }
 
   "A reader" should "not trigger conversion if an error occurred during reading" in {

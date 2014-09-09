@@ -16,7 +16,7 @@ class Mower private(var position: Point, var orientation: CardinalPoint, val par
 
   /**
    * Explore the mower's parent lawn from the given actions then return the current position and orientation.
-   * @param actions an ordered List of actions to be executed.
+   * @param actions an ordered [[List]] of actions to be executed.
    * @return a tuple (abscissa, ordinate, orientation).
    */
   def exploreLawn(actions: List[Char]) = {
@@ -29,11 +29,6 @@ class Mower private(var position: Point, var orientation: CardinalPoint, val par
     (position.abscissa, position.ordinate, orientation)
   }
 
-  /**
-   * Display the mower's position and orientation.
-   * @return the string to be displayed.
-   */
-  override def toString: String = "(%d,%d,%s)".format(position.abscissa, position.ordinate, orientation)
 }
 
 /**

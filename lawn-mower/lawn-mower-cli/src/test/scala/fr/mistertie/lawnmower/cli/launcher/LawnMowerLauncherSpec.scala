@@ -7,6 +7,7 @@ import fr.mistertie.lawnmower.test.tag.IntegrationTest
 
 /**
  * Test cases about [[LawnMowerLauncher]].
+ * @see [[BaseSpec]].
  */
 @IntegrationTest
 class LawnMowerLauncherSpec extends BaseSpec {

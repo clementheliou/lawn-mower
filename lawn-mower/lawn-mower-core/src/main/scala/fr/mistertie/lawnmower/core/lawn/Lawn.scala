@@ -32,7 +32,7 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
    * @throws IllegalArgumentException if the position is already booked or out of bounds.
    */
   def initializePosition(position: Point) {
-    if (isBookedAt(position)) {
+    if (isBooked(position)) {
       throw new IllegalArgumentException("Position already booked: " + position)
     }
 
@@ -50,7 +50,7 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
    * @param orientation the source orientation.
    * @return the next available position if this one is valid, the current one otherwise.
    */
-  def checkAndBookNextPosition(currentPosition: Point, orientation: CardinalPoint): Point = orientation match {
+  def checkAndBookNextPosition(currentPosition: Point, orientation: CardinalPoint) = orientation match {
     case EAST => checkAndBookPosition(currentPosition, currentPosition.translate(Point(1, 0)))
     case NORTH => checkAndBookPosition(currentPosition, currentPosition.translate(Point(0, 1)))
     case SOUTH => checkAndBookPosition(currentPosition, currentPosition.translate(Point(0, -1)))
@@ -65,7 +65,7 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
    * @return the next position if this one is valid, the current one otherwise.
    */
   private def checkAndBookPosition(currentPosition: Point, nextPosition: Point) = {
-    if (isBookedAt(nextPosition) || isOutOfBounds(nextPosition)) currentPosition
+    if (isBooked(nextPosition) || isOutOfBounds(nextPosition)) currentPosition
     else bookPosition(currentPosition, nextPosition)
   }
 
@@ -96,7 +96,7 @@ class Lawn private(topRightAbscissa: Int, topRightOrdinate: Int) {
    * @param position the position to be checked.
    * @return the checking result.
    */
-  def isBookedAt(position: Point) = bookedPositions.contains(position)
+  def isBooked(position: Point) = bookedPositions.contains(position)
 
 }
 

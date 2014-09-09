@@ -13,7 +13,7 @@ import scala.util.{Failure, Try}
 
 /**
  * Object containing the launch logic allowing its easy testing. Thus, this code is extracted from the application's
- * main method that stays as simple as possible.
+ * main method that remains as simple as possible.
  */
 object LawnMowerLauncher {
 
@@ -41,7 +41,7 @@ object LawnMowerLauncher {
    * @return the created mower.
    */
   private def createMowerFrom(position: (Int, Int, Char), lawn: Lawn) = {
-    Mower(Point(position._1, position._2), CardinalPoint(position._3), lawn)
+    Mower(Point(position._1, position._2), CardinalPoint.withName(position._3.toString), lawn)
   }
 
 }

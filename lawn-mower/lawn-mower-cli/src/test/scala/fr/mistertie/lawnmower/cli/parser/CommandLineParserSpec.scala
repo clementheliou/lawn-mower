@@ -7,6 +7,7 @@ import fr.mistertie.lawnmower.test.tag.UnitTest
 
 /**
  * Test cases about [[CommandLineParser]].
+ * @see [[BaseSpec]].
  */
 @UnitTest
 class CommandLineParserSpec extends BaseSpec {
