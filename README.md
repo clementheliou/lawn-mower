@@ -74,8 +74,8 @@ Fichier | Cas d'usage
 --------|------------
 [singleMower](https://bitbucket.org/mistertie/xebia-test/downloads/singleMower)|Une tondeuse seule.
 [singleMowerAtLawnBounds](https://bitbucket.org/mistertie/xebia-test/downloads/singleMowerAtLawnBounds)|Une tondeuse seule qui tente de franchir les limites de la pelouse.
-[multipleMowersWithoutCrash](https://bitbucket.org/mistertie/xebia-test/downloads/multipleMowersWithoutCrash)|Plusieures tondeuses qui n'entrent pas en collision.
-[multipleMowersWithCrash](https://bitbucket.org/mistertie/xebia-test/downloads/multipleMowersWithCrash)|Plusieures tondeuses qui engendrent des collisions.
+[multipleMowersWithoutCrash](https://bitbucket.org/mistertie/xebia-test/downloads/multipleMowersWithoutCrash)|Plusieurs tondeuses qui n'entrent pas en collision.
+[multipleMowersWithCrash](https://bitbucket.org/mistertie/xebia-test/downloads/multipleMowersWithCrash)|Plusieurs tondeuses qui engendrent des collisions.
 
 ---
 ## Notes techniques ##
@@ -162,7 +162,7 @@ La base de spécification ayant donné lieu à des questionnements, voici les ar
 > 	* sur une position hors de la pelouse;
 > 	* sur une position déjà prise.
 > * Une pelouse doit avoir à minima 2 points (i.e. ne peut avoir `(0,0)` comme coin supérieur droit).
-> * Le fichier fournit en entrée doit strictement respecter le format décrit dans les spécifications. Seuls les espaces multiples sont acceptés:
+> * Le fichier fourni en entrée doit strictement respecter le format décrit dans les spécifications. Seuls les espaces multiples sont acceptés:
 > 	* en début et fin de lignes;
 > 	* là où un seul espace est attendu.
 > * Toutes les tondeuses sont initialiées dans leur ordre de déclaration PUIS, toutes sont exécutées séquentiellement.
