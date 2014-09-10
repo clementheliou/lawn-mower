@@ -11,7 +11,7 @@ import fr.mistertie.lawnmower.parsing.mower.model.ParsedMower
 object MowerConverter extends Converter[(String, String), ParsedMower] {
 
   val actionsLinePattern = """\s*([ADG]+)\s*""".r
-  val positionLinePattern = """\s*([0-9])\s+([0-9])\s+([NEWS])\s*""".r
+  val positionLinePattern = """\s*([0-9]+)\s+([0-9]+)\s+([NEWS])\s*""".r
 
   /**
    * Convert the given pair of lines to a [[ParsedMower]] mainly using regular expressions to check expected formats.

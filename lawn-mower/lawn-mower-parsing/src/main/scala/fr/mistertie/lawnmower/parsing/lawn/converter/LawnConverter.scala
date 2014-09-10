@@ -15,7 +15,7 @@ import scala.collection.immutable.List.empty
  */
 object LawnConverter extends Converter[List[String], ParsedLawn] {
 
-  val topRightCornerLinePattern = """\s*([0-9])\s+([0-9])\s*""".r
+  val topRightCornerLinePattern = """\s*([0-9]+)\s+([0-9]+)\s*""".r
 
   /**
    * Convert the given list of lines to a [[ParsedLawn]] checking content size, using regular expression to check
